@@ -22,7 +22,7 @@ export default function APOD() {
         setPOD(response.data);
       })
       .catch(error => console.log("the NASA APOD was not returned", error));
-  }, []);
+  }, [dateURL]);
 
   if (!POD) return <h3>Loading...</h3>;
 
