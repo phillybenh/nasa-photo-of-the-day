@@ -23,8 +23,9 @@ const ContentContainer = styled.section`
   justify-content: center;
   align-items: center;
   padding: 2%;
+  margin-bottom: 15px;
   border: 2px solid black;
-  background: lightgrey;
+  background: ${props => (props.primary ? "lightblue" : "lightgrey")};
   color: black;
   border-radius: 20px;
 `;
@@ -72,7 +73,7 @@ export default function APOD() {
           </figure>
         </a>
       </ContentContainer>
-      <ContentContainer>
+      <ContentContainer primary>
         <Facts data={POD} />
       </ContentContainer>
       <ContentContainer>
