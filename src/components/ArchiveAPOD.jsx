@@ -1,9 +1,13 @@
 import React, { useState } from "react";
+import styled from "styled-components";
 
 export default function ArchiveAPOD(props) {
   const [date, setDate] = useState("");
   // console.log(props.archiveURL);
+  // console.log(date);
+
   return (
+    
     <section>
       <h3>Want to see a previous APOD?</h3>
 
@@ -13,19 +17,11 @@ export default function ArchiveAPOD(props) {
         id="APODDate"
         name="APODDate"
         onChange={
-          () => setDate('2004-10-09')
+          () => setDate("2006-10-09")
           // console.log("can I do something like setDate(this.value)??")
         }
       />
-      <input
-        type="submit"
-        onClick={
-          () => props.archiveURL(date)
-          // console.log(
-          //   "After I get the dateinput working, I'll use`props.archiveURL(date)`"
-          // )
-        }
-      />
+      <input type="submit" onClick={() => props.archiveURL(date)} />
     </section>
   );
 }

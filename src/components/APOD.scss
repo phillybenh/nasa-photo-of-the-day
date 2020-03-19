@@ -1,3 +1,5 @@
+@import "../../src/variables.scss";
+
 img {
     width: 100%;
     height: auto;
@@ -18,13 +20,14 @@ img {
     align-items: center;
     padding: 4%;
     border: 2px solid black;
-    background-color: white;
+    background-color: $factsBackground;
 }
 
 .photoContainer {
     color: black;
     
 }
+
 .factsContainer p {
     text-align:  justify
 }

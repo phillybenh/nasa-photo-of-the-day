@@ -1,13 +1,19 @@
 import React from "react";
 import APOD from './components/APOD';
-import "./App.css";
+import styled from "styled-components";
+import "./index.scss";
+
+const AppContainer = styled.div`
+text-align: center;
+color: white;
+`
 
 function App() {
   return (
-    <div className="App">
+    <AppContainer>
       <h1>Take a look at the NASA Astronomy Picture of the Day</h1>
       <APOD />
-    </div>
+    </AppContainer>
   );
 }
 

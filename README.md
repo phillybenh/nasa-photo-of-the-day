@@ -110,6 +110,35 @@ return (
 Do not attempt stretch problems until MVP has been reached and a final commit has been made.
 
 - [ ] Notice the optional query param `date`? You can pass a different date in your url like this `https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=2012-03-14` to get the APOD from a different date. Add a date dropdown that allows you to select a different date and see that APOD. This will be quite a bit of work, but it will be a fantastic exercise to go through a little more complicated logic and interaction in your app. This is also a very common type of interaction, so it would be good to try this out
+
+My initial Idea:
+```
+import React, { useState } from "react";
+
+export default function ArchiveAPOD(props) {
+  const [date, setDate] = useState("");
+  // console.log(props.archiveURL);
+
+  return (
+    <section>
+      <h3>Want to see a previous APOD?</h3>
+
+      <label>Please choose a date: </label>
+      <input
+        type="date"
+        id="APODDate"
+        name="APODDate"
+        onChange={
+          () => setDate("2006-10-09")
+          // console.log("can I do something like setDate(this.value)??")
+        }
+      />
+      <input type="submit" onClick={() => props.archiveURL(date)} />
+    </section>
+  );
+}
+```
+
 - [ ] Make another app that consumes another one of NASA's other APIs listed on the same website
 
 

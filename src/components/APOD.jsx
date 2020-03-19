@@ -1,16 +1,23 @@
 import React, { useState, useEffect } from "react";
 import Facts from "./Facts";
 import ArchiveAPOD from "./ArchiveAPOD";
-import "./APOD.css";
 import axios from "axios";
+import "./APOD.scss";
+import styled from "styled-components";
 
+//Styles
+
+//Main Function
 export default function APOD() {
+  //Set Variable State
   const [POD, setPOD] = useState("");
   const [dateURL, setDateURL] = useState("");
 
+//Fcn to set up date picker
   const archiveURL = (date) => {
      return setDateURL(`&date=${date}`)
   }
+
 
   useEffect(() => {
     axios
@@ -18,12 +25,13 @@ export default function APOD() {
         `https://api.nasa.gov/planetary/apod?api_key=Fxx4K3wvOl3k3rZ7xqXhJk3bCwLtfxbMXnbAbhLA${dateURL}`
       )
       .then(response => {
-        console.log(response.data);
+        // console.log(response.data);
         setPOD(response.data);
       })
       .catch(error => console.log("the NASA APOD was not returned", error));
   }, [dateURL]);
 
+  //Loading message for slow-loads
   if (!POD) return <h3>Loading...</h3>;
 
   return (
