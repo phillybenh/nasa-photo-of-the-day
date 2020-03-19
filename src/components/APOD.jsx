@@ -2,10 +2,32 @@ import React, { useState, useEffect } from "react";
 import Facts from "./Facts";
 import ArchiveAPOD from "./ArchiveAPOD";
 import axios from "axios";
-import "./APOD.scss";
+import "../index.scss";
 import styled from "styled-components";
 
 //Styles
+const SpacePic = styled.img`
+  width: 100%;
+  height: auto;
+`;
+const APODContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+const ContentContainer = styled.section`
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2%;
+  border: 2px solid black;
+  background: lightgrey;
+  color: black;
+  border-radius: 20px;
+`;
 
 //Main Function
 export default function APOD() {
@@ -13,11 +35,10 @@ export default function APOD() {
   const [POD, setPOD] = useState("");
   const [dateURL, setDateURL] = useState("");
 
-//Fcn to set up date picker
-  const archiveURL = (date) => {
-     return setDateURL(`&date=${date}`)
-  }
-
+  //Fcn to set up date picker
+  const archiveURL = date => {
+    return setDateURL(`&date=${date}`);
+  };
 
   useEffect(() => {
     axios
@@ -35,11 +56,11 @@ export default function APOD() {
   if (!POD) return <h3>Loading...</h3>;
 
   return (
-    <div className="container">
-      <section className="photoContainer">
+    <APODContainer>
+      <ContentContainer>
         <a href={POD.hdurl} target="_blank" rel="noopener noreferrer">
           <figure>
-            <img
+            <SpacePic
               src={POD.url}
               alt="the NASA Astronomy Pic of the Day"
               title={POD.title}
@@ -50,9 +71,13 @@ export default function APOD() {
             <figcaption>(click for hi-res version)</figcaption>
           </figure>
         </a>
+      </ContentContainer>
+      <ContentContainer>
         <Facts data={POD} />
+      </ContentContainer>
+      <ContentContainer>
         <ArchiveAPOD archiveURL={archiveURL} />
-      </section>
-    </div>
+      </ContentContainer>
+    </APODContainer>
   );
 }
