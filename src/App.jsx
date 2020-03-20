@@ -5,7 +5,7 @@ import "./index.scss";
 
 const AppContainer = styled.div`
 text-align: center;
-color: white;
+color: lightgrey;
 `
 
 
