@@ -87,7 +87,6 @@ export default function APOD() {
       </APODContainer>
     );
   } else if (POD.media_type === "video") {
-    console.log(POD);
     return (
       <APODContainer>
         <ContentContainer>
